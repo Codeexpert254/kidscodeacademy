@@ -1,0 +1,80 @@
+/* Header/Navbar component specific styles */
+.navbar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 0 0 20px 20px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-top: none !important;
+  justify-content: space-between !important;
+  padding: 0 1rem !important;
+}
+
+.navbar .navbar-nav {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+.navbar .nav-item:last-child {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: var(--primary-color) !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  text-shadow: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.navbar .navbar-brand {
+  font-size: 1.8rem !important;
+  font-weight: 800 !important;
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--fun-pink)
+  ) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Specific logo helper class for consistent sizing */
+.header-logo {
+  max-height: 70px; /* increased so logo is visible */
+  width: auto; /* preserve aspect ratio */
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 12px;
+  object-fit: contain;
+  filter: drop-shadow(
+    0 2px 4px rgba(0, 0, 0, 0.12)
+  ); /* subtle separation from background */
+}
+
+/* Fallback selector in case some markup still targets an image under .navbar-brand */
+.navbar .navbar-brand img {
+  max-height: 70px !important;
+  width: auto !important;
+  margin-right: 12px !important;
+  vertical-align: middle !important;
+  object-fit: contain !important;
+}
+
+.navbar .navbar-brand:hover,
+.navbar .nav-link:hover {
+  color: var(--accent-color) !important;
+}
+
+.navbar-toggler {
+  border: 2px solid var(--primary-color) !important;
+  border-radius: 8px !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='var(--primary-color)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
