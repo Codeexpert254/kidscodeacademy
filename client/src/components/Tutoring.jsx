@@ -21,7 +21,7 @@ const Tutoring = () => {
   const [alertMessage, setAlertMessage] = useState("");
 
   useEffect(() => {
-    const newSocket = io("http://localhost:5000");
+    const newSocket = io("https://kidscodeacademy.onrender.com");
     setSocket(newSocket);
 
     newSocket.on("connect", () => {

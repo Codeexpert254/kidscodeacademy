@@ -38,7 +38,7 @@ const handleChange = (e) => {
 const handleSubmit = async (e) => {
   // Step 1: POST booking data to server
   const res = await axios.post(
-    "http://localhost:5000/api/book-session",
+    "https://kidscodeacademy.onrender.com/api/book-session",
     formData
   );
 

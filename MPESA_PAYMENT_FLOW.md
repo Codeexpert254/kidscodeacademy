@@ -24,11 +24,14 @@ const handleMPesaPayment = async () => {
 
   try {
     // SEND REQUEST TO BACKEND
-    const res = await axios.post("http://localhost:5000/api/pay/mpesa", {
-      amount: Math.floor(amount / 100), // Convert $60 to 600 KES
-      phone, // User's phone: 2547XXXXXXXX
-      bookingId, // Link to booking created earlier
-    });
+    const res = await axios.post(
+      "https://kidscodeacademy.onrender.com/api/pay/mpesa",
+      {
+        amount: Math.floor(amount / 100), // Convert $60 to 600 KES
+        phone, // User's phone: 2547XXXXXXXX
+        bookingId, // Link to booking created earlier
+      }
+    );
 
     if (res.data && res.data.success) {
       // Show message to user

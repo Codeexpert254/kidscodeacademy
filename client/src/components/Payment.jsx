@@ -36,7 +36,7 @@ const Payment = () => {
     try {
       // Step 1: Book the session (without payment)
       const res = await axios.post(
-        "http://localhost:5000/api/book-session",
+        "https://kidscodeacademy.onrender.com/api/book-session",
         formData
       );
 
@@ -44,10 +44,13 @@ const Payment = () => {
         setBookingId(res.data.id);
         // create a tutoring room for this booking so tutor/student can join
         try {
-          const roomResp = await axios.post("http://localhost:5000/api/rooms", {
-            bookingId: res.data.id,
-            expiresInMinutes: 120,
-          });
+          const roomResp = await axios.post(
+            "https://kidscodeacademy.onrender.com/api/rooms",
+            {
+              bookingId: res.data.id,
+              expiresInMinutes: 120,
+            }
+          );
           if (roomResp.data && roomResp.data.roomId)
             setRoomId(roomResp.data.roomId);
         } catch (err) {
@@ -230,7 +233,7 @@ const PaymentMethodSelector = ({ bookingId, amount }) => {
       const success_url = `${window.location.origin}/?payment_status=success&booking_id=${bookingId}`;
       const cancel_url = `${window.location.origin}/?payment_status=canceled&booking_id=${bookingId}`;
       const res = await axios.post(
-        "http://localhost:5000/api/pay/stripe/create-session",
+        "https://kidscodeacademy.onrender.com/api/pay/stripe/create-session",
         { amount, success_url, cancel_url, bookingId }
       );
       if (res.data && res.data.url) {
@@ -250,7 +253,7 @@ const PaymentMethodSelector = ({ bookingId, amount }) => {
     setLoading(true);
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/pay/paypal/create-order",
+        "https://kidscodeacademy.onrender.com/api/pay/paypal/create-order",
         { amount, bookingId }
       );
       if (res.data && res.data.approvalUrl) {
@@ -278,7 +281,7 @@ const PaymentMethodSelector = ({ bookingId, amount }) => {
     setLoading(true);
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/pay/paypal/capture",
+        "https://kidscodeacademy.onrender.com/api/pay/paypal/capture",
         { orderId: paypalOrderId, bookingId }
       );
       if (res.data && res.data.status === "COMPLETED") {
@@ -301,11 +304,14 @@ const PaymentMethodSelector = ({ bookingId, amount }) => {
     }
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/pay/mpesa", {
-        amount: Math.floor(amount / 1), // Convert cents to KES
-        phone,
-        bookingId,
-      });
+      const res = await axios.post(
+        "https://kidscodeacademy.onrender.com/api/pay/mpesa",
+        {
+          amount: Math.floor(amount / 1), // Convert cents to KES
+          phone,
+          bookingId,
+        }
+      );
       if (res.data && res.data.success) {
         setMessage(
           `M-Pesa STK Push sent. Confirm on your phone (${phone}). Your session will be booked after payment.`

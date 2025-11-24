@@ -2,7 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import io from "socket.io-client";
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:5000";
+const SERVER_URL =
+  import.meta.env.VITE_SERVER_URL || "https://kidscodeacademy.onrender.com";
 
 const Session = () => {
   const params = useParams();
